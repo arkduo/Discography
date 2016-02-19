@@ -60,6 +60,8 @@ gem 'parser', '2.2.0.1'
 gem 'kaminari'
 gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
 
+gem 'mp3_player'
+
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
