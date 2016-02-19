@@ -1,0 +1,17 @@
+p#notice
+  = notice
+p
+  strong
+    | Name:
+  = @tune.name
+p
+  strong
+    | Artist:
+  = @tune.artist
+p
+  strong
+    | Genre:
+  = @tune.genre
+= link_to 'Edit', edit_tune_path(@tune)
+|  | 
+= link_to 'Back', tunes_path

@@ -1,0 +1,24 @@
+= form_for(@tune) do |f|
+  - if @tune.errors.any?
+    #error_explanation
+      h2
+        = pluralize(@tune.errors.count, "error")
+        |  prohibited this tune from being saved:
+      ul
+        - @tune.errors.full_messages.each do |message|
+          li
+            = message
+  .field
+    = f.label :name
+    br
+    = f.text_field :name
+  .field
+    = f.label :artist
+    br
+    = f.text_field :artist
+  .field
+    = f.label :genre
+    br
+    = f.text_field :genre
+  .actions
+    = f.submit

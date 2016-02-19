@@ -1,0 +1,36 @@
+p#notice
+  = notice
+h1
+  | Listing Tunes
+table#tunes.table.table-striped.table-bordered
+  thead
+    tr
+      th
+        | Name
+      th
+        | Artist
+      th
+        | Genre
+      th
+        | show
+      th
+        | edit
+      th
+        | des
+  tbody
+    - @tunes.each do |tune|
+      tr
+        td
+          = tune.name
+        td
+          = tune.artist
+        td
+          = tune.genre
+        td
+          = link_to 'Show', tune
+        td
+          = link_to 'Edit', edit_tune_path(tune)
+        td
+          = link_to 'Destroy', tune, method: :delete, data: { confirm: 'Are you sure?' }
+br
+= link_to 'New Tune', new_tune_path
