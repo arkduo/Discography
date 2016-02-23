@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160217155037) do
+ActiveRecord::Schema.define(version: 20160222175544) do
 
   create_table "tunes", force: :cascade do |t|
     t.string   "name"
@@ -19,6 +19,9 @@ ActiveRecord::Schema.define(version: 20160217155037) do
     t.string   "genre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "mp3"
+    t.string   "image"
+    t.string   "album"
   end
 
 end

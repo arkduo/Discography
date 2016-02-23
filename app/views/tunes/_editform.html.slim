@@ -9,6 +9,18 @@
           li
             = message
   .field
+    = f.label :name
+    br
+    = f.text_field :name
+  .field
+    = f.label :artist
+    br
+    = f.text_field :artist
+  .field
+    = f.label :genre
+    br
+    = f.text_field :genre
+  .field
     = f.label :mp3
     br
     = f.file_field :mp3

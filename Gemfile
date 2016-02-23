@@ -61,6 +61,8 @@ gem 'kaminari'
 gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
 
 gem 'mp3_player'
+gem 'mediaelement_rails'
+gem 'mp3info'
 
 group :development, :test do
   gem 'binding_of_caller'

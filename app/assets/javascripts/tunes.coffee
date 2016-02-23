@@ -9,4 +9,8 @@ jQuery ->
     "columns": [ # 扱うカラムの指定
       { "data": "name" },
       { "data": "artist" },
+      { "data": "mp3.url" }
     ]
+
+  $('#datatables').dataTable()
+  $('audio').mediaelementplayer()

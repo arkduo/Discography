@@ -27,7 +27,7 @@ class TunesController < ApplicationController
     @tune = Tune.new(tune_params)
 
     respond_to do |format|
-      if @tune.save
+      if @tune.save_info
         format.html { redirect_to @tune, notice: 'Tune was successfully created.' }
         format.json { render :show, status: :created, location: @tune }
       else
@@ -76,6 +76,6 @@ class TunesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tune_params
-      params.require(:tune).permit(:name, :artist, :genre)
+      params.require(:tune).permit(:name, :artist, :album, :genre, :mp3, :image)
     end
 end
