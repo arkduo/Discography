@@ -8,11 +8,19 @@
         - @tune.errors.full_messages.each do |message|
           li
             = message
-  /.field
+  .field
     = f.label :title
     br
     = f.text_field :title
-  .field
+  /.field
+    = label :artist, :name
+    br
+    = text_field :artist, :name
+  /.field
+    = f.label :genre
+    br
+    = f.text_field :genre
+  /.field
     = f.label :mp3
     br
     = f.file_field :mp3

@@ -5,6 +5,11 @@ class TunesController < ApplicationController
   # GET /tunes.json
   def index
     @tunes = Tune.all
+    @lists = []
+    @tunes.each do |tune|
+      @lists << tune.mp3.url
+    end
+    @lists.join(', ')
   end
 
   # GET /tunes/1
@@ -27,7 +32,7 @@ class TunesController < ApplicationController
     @tune = Tune.new(tune_params)
 
     respond_to do |format|
-      if @tune.save
+      if @tune.save_info
         format.html { redirect_to @tune, notice: 'Tune was successfully created.' }
         format.json { render :show, status: :created, location: @tune }
       else
@@ -76,6 +81,6 @@ class TunesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tune_params
-      params.require(:tune).permit(:name, :artist, :genre)
+      params.require(:tune).permit(:mp3)
     end
 end

@@ -1,36 +1,54 @@
+= javascript_include_tag 'mep-feature-playlist.js'
+= stylesheet_link_tag 'mep-feature-playlist.css'
 p#notice
   = notice
 h1
   | Listing Tunes
-table#tunes.table.table-striped.table-bordered
+table#datatables.table.table-striped.table-bordered
   thead
     tr
+      /th
+        | Image
       th
-        | Name
+        | Title
+      th
+        | Track
+      th
+        | Album
       th
         | Artist
       th
         | Genre
-      th
+      /th
         | show
-      th
+      /th
         | edit
-      th
+      /th
         | des
+      th
+        | 
   tbody
     - @tunes.each do |tune|
       tr
+        /td
+          = image_tag(tune.image.url, size: "32x32")
         td
-          = tune.name
+          = tune.title
         td
-          = tune.artist
+          = tune.tracknum
+        td
+          = tune.album.title
+        td
+          = tune.artist.name
         td
           = tune.genre
-        td
+        /td
           = link_to 'Show', tune
         td
           = link_to 'Edit', edit_tune_path(tune)
-        td
+        /td
           = link_to 'Destroy', tune, method: :delete, data: { confirm: 'Are you sure?' }
 br
 = link_to 'New Tune', new_tune_path
+br
+= audio_tag(@lists, id: 'playlist', controls: true)
