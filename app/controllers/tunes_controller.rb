@@ -5,6 +5,11 @@ class TunesController < ApplicationController
   # GET /tunes.json
   def index
     @tunes = Tune.all
+    @lists = []
+    @tunes.each do |tune|
+      @lists << tune.mp3.url
+    end
+    @lists.join(', ')
   end
 
   # GET /tunes/1
@@ -76,6 +81,6 @@ class TunesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tune_params
-      params.require(:tune).permit(:name, :artist, :album, :genre, :mp3, :image)
+      params.require(:tune).permit(:mp3)
     end
 end

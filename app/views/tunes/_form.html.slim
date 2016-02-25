@@ -8,11 +8,15 @@
         - @tune.errors.full_messages.each do |message|
           li
             = message
+  /.field
+    = f.label :title
+    br
+    = f.text_field :title
   .field
     = f.label :mp3
     br
     = f.file_field :mp3
-  .field
+  /.field
     = f.label :image
     br
     = f.file_field :image

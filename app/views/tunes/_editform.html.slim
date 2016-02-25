@@ -9,22 +9,22 @@
           li
             = message
   .field
-    = f.label :name
+    = f.label :title
     br
-    = f.text_field :name
-  .field
-    = f.label :artist
+    = f.text_field :title
+  /.field
+    = label :artist, :name
     br
-    = f.text_field :artist
-  .field
+    = text_field :artist, :name
+  /.field
     = f.label :genre
     br
     = f.text_field :genre
-  .field
+  /.field
     = f.label :mp3
     br
     = f.file_field :mp3
-  .field
+  /.field
     = f.label :image
     br
     = f.file_field :image

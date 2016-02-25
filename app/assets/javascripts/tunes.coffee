@@ -12,5 +12,30 @@ jQuery ->
       { "data": "mp3.url" }
     ]
 
-  $('#datatables').dataTable()
-  $('audio').mediaelementplayer()
+  $('#datatables').dataTable
+    "processing": true, # 処理中の表示
+    "columnDefs": [ # 検索対象外に設定
+      { "targets": 1, "searchable": false }, # tracknum
+      { "targets": 5, "searchable": false }, # mp3
+    ]
+    
+  $('audio#play').mediaelementplayer()
+  $('audio#playlist').mediaelementplayer
+    "loop": false,
+    "shuffle": false,
+    "playlist": true,
+    "audioHeight": 30,
+    "playlistposition": "bottom",
+    "features": [
+      'playlistfeature',
+      'prevtrack',
+      'playpause',
+      'nexttrack',
+      'loop',
+      'shuffle',
+      'playlist',
+      'current',
+      'progress',
+      'duration',
+      'volume'
+    ]
