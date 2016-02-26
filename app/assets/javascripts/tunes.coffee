@@ -14,6 +14,7 @@ jQuery ->
 
   $('#datatables').dataTable
     "processing": true, # 処理中の表示
+    "order": [[1, 'asc']]
     "columnDefs": [ # 検索対象外に設定
       { "targets": 1, "searchable": false }, # tracknum
       { "targets": 5, "searchable": false }, # mp3

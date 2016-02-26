@@ -24,8 +24,12 @@ class Tune < ActiveRecord::Base
           self.genre = val
         end
       end
-      save_album(title, year)
+      # ジャケット画像用検索クエリ
+      # query = title + ' ' + name
+      query = title
+      save_album(title, year, query)
       save_artist(name)
+
     end
     save
   end
@@ -39,10 +43,14 @@ class Tune < ActiveRecord::Base
     self.artist_id = res.id
   end
 
-  def save_album(title, year)
+  def save_album(title, year, query)
     res = Album.find_by(title: title, year: year)
     if res == nil
-      new = Album.create(title: title, year: year)
+      # ジャケット画像のurlを取得
+      link = ScrapeJacket.rakuten_get_link(query)
+      img_url = ScrapeJacket.rakuten_get_cdjacket(link)
+
+      new = Album.create(title: title, year: year, remote_image_url: img_url)
       res = new
     end
     self.album_id = res.id

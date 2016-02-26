@@ -27,5 +27,6 @@ module Discography
     config.active_record.default_timezone = :local
     # json overload
     config.autoload_paths += %W(#{config.root}/app/datatables)
+    config.autoload_paths += %W(#{config.root}/lib)
   end
 end

@@ -7,7 +7,7 @@ h1
 table#datatables.table.table-striped.table-bordered
   thead
     tr
-      /th
+      th
         | Image
       th
         | Title
@@ -30,8 +30,8 @@ table#datatables.table.table-striped.table-bordered
   tbody
     - @tunes.each do |tune|
       tr
-        /td
-          = image_tag(tune.image.url, size: "32x32")
+        td
+          = image_tag(tune.album.image.url, size: "32x32")
         td
           = tune.title
         td
