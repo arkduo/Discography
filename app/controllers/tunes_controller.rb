@@ -81,6 +81,13 @@ class TunesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tune_params
-      params.require(:tune).permit(:mp3)
+      params.require(:tune).permit(
+        :mp3,
+        :title,
+        :genre,
+        :remarks,
+        artist_attributes: [:name],
+        album_attributes: [:title, :year]
+      )
     end
 end
