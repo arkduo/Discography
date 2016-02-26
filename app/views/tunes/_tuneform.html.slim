@@ -9,24 +9,30 @@
           li
             = message
   .field
-    = f.label :title
+    | Music title
     br
     = f.text_field :title
-  /.field
-    = label :artist, :name
-    br
-    = text_field :artist, :name
-  /.field
-    = f.label :genre
+  .field
+    | Genre
     br
     = f.text_field :genre
-  /.field
-    = f.label :mp3
+  .field
+    | Comment
     br
-    = f.file_field :mp3
-  /.field
-    = f.label :image
-    br
-    = f.file_field :image
+    = f.text_field :remarks
+  = f.fields_for :album do |al|
+    .field
+      | Album title
+      br
+      = al.text_field :title
+    .field
+      | Year
+      br
+      = al.text_field :year
+  = f.fields_for :artist do |ar|
+    .field
+      | Artist name
+      br
+      = ar.text_field :name
   .actions
     = f.submit

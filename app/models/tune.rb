@@ -1,6 +1,8 @@
 class Tune < ActiveRecord::Base
   belongs_to :artist
   belongs_to :album
+  accepts_nested_attributes_for :artist
+  accepts_nested_attributes_for :album
   mount_uploader :mp3, Mp3Uploader
 
   def save_info
