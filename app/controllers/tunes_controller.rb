@@ -45,6 +45,7 @@ class TunesController < ApplicationController
   # PATCH/PUT /tunes/1
   # PATCH/PUT /tunes/1.json
   def update
+    @tune.update_info(params[:tune]) # 変更したartistとalbumが既に登録済みかチェック
     respond_to do |format|
       if @tune.update(tune_params)
         format.html { redirect_to @tune, notice: 'Tune was successfully updated.' }
@@ -86,8 +87,8 @@ class TunesController < ApplicationController
         :title,
         :genre,
         :remarks,
-        artist_attributes: [:name],
-        album_attributes: [:title, :year]
+        #artist_attributes: [:name],
+        #album_attributes: [:title, :year]
       )
     end
 end

@@ -6,7 +6,7 @@ class Tune < ActiveRecord::Base
   mount_uploader :mp3, Mp3Uploader
 
   def save_info
-    title, name, year = "", "", 0
+    title, name, year = '', '', 0
     Mp3Info.open(mp3.path) do |file|
       file.tag.each do |key, val|
         case key
@@ -30,15 +30,6 @@ class Tune < ActiveRecord::Base
     save
   end
 
-  def save_album(title, year)
-    res = Album.find_by(title: title)
-    if res == nil
-      new = Album.create(title: title, year: year)
-      res = new
-    end
-    self.album_id = res.id
-  end
-
   def save_artist(name)
     res = Artist.find_by(name: name)
     if res == nil
@@ -46,5 +37,19 @@ class Tune < ActiveRecord::Base
       res = new
     end
     self.artist_id = res.id
+  end
+
+  def save_album(title, year)
+    res = Album.find_by(title: title, year: year)
+    if res == nil
+      new = Album.create(title: title, year: year)
+      res = new
+    end
+    self.album_id = res.id
+  end
+
+  def update_info(params)
+    save_artist(params[:artist_attributes][:name])
+    save_album(params[:album_attributes][:title], params[:album_attributes][:year])
   end
 end
