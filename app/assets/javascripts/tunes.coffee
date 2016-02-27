@@ -20,8 +20,7 @@ jQuery ->
       { "targets": 5, "searchable": false }, # mp3
     ]
     
-  $('audio#play').mediaelementplayer()
-  $('audio#playlist').mediaelementplayer
+  $('audio').mediaelementplayer
     "loop": false,
     "shuffle": false,
     "playlist": true,

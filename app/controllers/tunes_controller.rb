@@ -7,7 +7,7 @@ class TunesController < ApplicationController
     @tunes = Tune.all
     @lists = []
     @tunes.each do |tune|
-      @lists << tune.mp3.url
+      @lists << { src: tune.mp3.url, title: tune.title }
     end
     @lists.join(', ')
   end
