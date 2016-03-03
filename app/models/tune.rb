@@ -29,7 +29,6 @@ class Tune < ActiveRecord::Base
       query = title
       save_album(title, year, query)
       save_artist(name)
-
     end
     save
   end
@@ -48,7 +47,8 @@ class Tune < ActiveRecord::Base
     if res == nil
       # ジャケット画像のurlを取得
       link = ScrapeJacket.rakuten_get_link(query)
-      img_url = ScrapeJacket.rakuten_get_cdjacket(link)
+      # 文字化け等でlinkが取得できなかった場合，img_urlは空
+      img_url = link != nil ? ScrapeJacket.rakuten_get_cdjacket(link) : ''
 
       new = Album.create(title: title, year: year, remote_image_url: img_url)
       res = new

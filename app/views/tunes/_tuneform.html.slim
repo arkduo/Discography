@@ -20,6 +20,11 @@
     | Comment
     br
     = f.text_field :remarks
+  = f.fields_for :artist do |ar|
+    .field
+      | Artist name
+      br
+      = ar.text_field :name
   = f.fields_for :album do |al|
     .field
       | Album title
@@ -29,10 +34,10 @@
       | Year
       br
       = al.text_field :year
-  = f.fields_for :artist do |ar|
     .field
-      | Artist name
+      | Album jacket
       br
-      = ar.text_field :name
+      = image_tag @tune.album.image.url
   .actions
     = f.submit
+

@@ -118,7 +118,6 @@ GEM
     mime-types (2.99)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
-    mp3_player (0.1.1)
     mp3info (0.8.5)
       ruby-mp3info (>= 0.8.5)
     multi_json (1.11.2)
@@ -247,7 +246,6 @@ DEPENDENCIES
   kaminari
   less-rails
   mediaelement_rails
-  mp3_player
   mp3info
   parser (= 2.2.0.1)
   pry-byebug

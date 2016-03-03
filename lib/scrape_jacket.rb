@@ -15,8 +15,12 @@ class ScrapeJacket
   # =====================================================================
 
   def self.rakuten_get_link(title)
-    title = title.encode 'EUC-JP' # 日本語をEUC形式にする
-    url_title = URI.encode(title) # 日本語文字列をURI変換する
+    begin
+      title = title.encode 'EUC-JP' # 日本語をEUC形式にする
+      url_title = URI.encode(title) # 日本語文字列をURI変換する
+    rescue
+      return nil
+    end
 
     url = "http://search.books.rakuten.co.jp/bksearch/nm?sv=30&h=30&o=0&v=&spv=&s=1&e=&cy=&b=1&g=002&sitem=#{url_title}&x=0&y=0"
 

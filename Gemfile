@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+# source 'https://rails-assets.org'
 
 gem 'dotenv-rails'
 
@@ -60,7 +61,6 @@ gem 'parser', '2.2.0.1'
 gem 'kaminari'
 gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
 
-gem 'mp3_player'
 gem 'mediaelement_rails'
 gem 'mp3info'
 
