@@ -16,4 +16,5 @@
 //= require dataTables/jquery.dataTables
 //= require mediaelement_rails
 //= require mep-feature-playlist
+//= reuqire jquery-ui
 //= require_tree .

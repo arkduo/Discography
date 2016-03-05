@@ -14,7 +14,8 @@ class ScrapeJacket
   # 楽天ブックスからCDへのリンクを収集する
   # =====================================================================
 
-  def self.rakuten_get_link(title)
+  def self.rakuten_get_link(title, num)
+    links = [] # 検索結果格納用
     begin
       title = title.encode 'EUC-JP' # 日本語をEUC形式にする
       url_title = URI.encode(title) # 日本語文字列をURI変換する
@@ -27,24 +28,32 @@ class ScrapeJacket
     # htmlをパース(解析)してオブジェクトを生成
     doc = Nokogiri::HTML(open(url, 'User-Agent' => User_agent).read)
 
-    # 検索結果
-    url = doc.xpath('//*[@id="ratArea"]/div/'+"div[1]/div[2]/div[1]/h3/a").attribute('href').value
-    return url if url.present?
+    for i in 1..num do
+      begin
+        # 検索結果
+        url = doc.xpath('//*[@id="ratArea"]/div/'+"div[#{i}]/div[2]/div[1]/h3/a").attribute('href').value
+        links << url
+      rescue
+      end
+    end
+    return links if links.present?
   end
 
   # =====================================================================
   #  楽天ブックスのリンクからCDジャケットを収集する
   # =====================================================================
 
-  def self.rakuten_get_cdjacket(url)
-    # url = "http://books.rakuten.co.jp/rb/12436225/" # test用
+  def self.rakuten_get_cdjacket(urls)
+    imgs = [] # 画像URL格納用
+    urls.each do |url|
+      # htmlをパース(解析)してオブジェクトを生成
+      doc = Nokogiri::HTML(open(url, 'User-Agent' => User_agent).read)
 
-    # htmlをパース(解析)してオブジェクトを生成
-    doc = Nokogiri::HTML(open(url, 'User-Agent' => User_agent).read)
-
-    # リンク先から画像のurlを取得
-    img = doc.xpath('//*[@id="productExtra"]/dl/dt/a/img').attribute('src').value
-    img =  img.split('?')[0] if img.present?
-    return img if img.present?
+      # リンク先から画像のurlを取得
+      img = doc.xpath('//*[@id="productExtra"]/dl/dt/a/img').attribute('src').value
+      img =  img.split('?')[0] if img.present?
+      imgs << img
+    end
+    return imgs if imgs.present?
   end
 end

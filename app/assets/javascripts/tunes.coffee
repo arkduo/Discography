@@ -2,15 +2,15 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 jQuery ->
-  $('#tunes').dataTable
-    "processing": true, # 処理中の表示
-    "serverSide": true, # サーバサイドへ Ajax するか
-    "ajax": "list", # Ajax の通信先
-    "columns": [ # 扱うカラムの指定
-      { "data": "name" },
-      { "data": "artist" },
-      { "data": "mp3.url" }
-    ]
+  # $('#tunes').dataTable
+  #   "processing": true, # 処理中の表示
+  #   "serverSide": true, # サーバサイドへ Ajax するか
+  #   "ajax": "list", # Ajax の通信先
+  #   "columns": [ # 扱うカラムの指定
+  #     { "data": "name" },
+  #     { "data": "artist" },
+  #     { "data": "mp3.url" }
+  #   ]
 
   $('#datatables').dataTable
     "processing": true, # 処理中の表示
@@ -19,7 +19,8 @@ jQuery ->
       { "targets": 1, "searchable": false }, # tracknum
       { "targets": 5, "searchable": false }, # mp3
     ]
-    
+
+jQuery ->
   $('audio').mediaelementplayer
     "loop": false,
     "shuffle": false,

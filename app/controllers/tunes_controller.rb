@@ -46,6 +46,8 @@ class TunesController < ApplicationController
   # PATCH/PUT /tunes/1.json
   def update
     @tune.update_info(params[:tune]) # 変更したartistとalbumが既に登録済みかチェック
+    # 変更したジャケット画像の更新
+    @tune.album.remote_image_url = params[:jacket] if params[:jacket].present?
     respond_to do |format|
       if @tune.update(tune_params)
         format.html { redirect_to @tune, notice: 'Tune was successfully updated.' }
@@ -71,6 +73,13 @@ class TunesController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render json: TunesDatatable.new(params) }
+    end
+  end
+
+  def search
+    @album = Album.find_by(id: params[:album_id])
+    respond_to do |format|
+      format.js
     end
   end
 

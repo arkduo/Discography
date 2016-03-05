@@ -64,6 +64,8 @@ gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
 gem 'mediaelement_rails'
 gem 'mp3info'
 
+gem 'jquery-ui-rails'
+
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'

@@ -37,7 +37,13 @@
     .field
       | Album jacket
       br
-      = image_tag @tune.album.image.url
+      = image_tag @tune.album.image.url, size: '200x200'
+    .field
+      /= button_tag 'Search Image', { action: :search_image }, { remote: true }
+      /#search_reslut
+      /= render 'search_image', val: @tune.album.title
+      = link_to 'Search Image', search_tune_path(album_id: @tune.album_id), remote: true
+      #show
   .actions
     = f.submit
 

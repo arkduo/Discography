@@ -8,6 +8,8 @@ table#datatables.table.table-striped.table-bordered
   thead
     tr
       th
+        | 
+      th
         | Image
       th
         | Title
@@ -28,8 +30,10 @@ table#datatables.table.table-striped.table-bordered
       th
         | 
   tbody
-    - @tunes.each do |tune|
+    - @tunes.each_with_index do |tune, index|
       tr
+        td
+          = check_box_tag 'tune', index
         td
           = image_tag(tune.album.image.url, size: "32x32")
         td
@@ -49,6 +53,9 @@ table#datatables.table.table-striped.table-bordered
         /td
           = link_to 'Destroy', tune, method: :delete, data: { confirm: 'Are you sure?' }
 br
-= link_to 'New Tune', new_tune_path
+div style='text-align:center'
+  = link_to 'Add Playlist'
+  span style='margin-left:100px'
+    = link_to 'New Tune', new_tune_path
 br
 = audio_tag_multiple(@lists)

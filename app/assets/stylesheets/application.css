@@ -16,5 +16,6 @@
  * and optionally:
  *= require mediaelement_rails/mejs-skins
  *= require mep-feature-playlist
+ *= require jquery-ui
  *= require_self
  */

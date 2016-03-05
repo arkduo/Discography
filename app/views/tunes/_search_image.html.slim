@@ -1,0 +1,5 @@
+- link = ScrapeJacket.rakuten_get_link(val.title, 5)
+- img_urls = link != nil ? ScrapeJacket.rakuten_get_cdjacket(link) : ''
+- img_urls.each_with_index do |img, index|
+  = radio_button_tag 'jacket', img
+  = image_tag img, size: '100x100'
